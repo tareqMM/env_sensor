@@ -1,0 +1,17 @@
+#
+# Copyright (c) 2024 Tareq Mhisen
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# How often sensor data is read
+config MEASURING_PERIOD_SECONDS
+	int
+	default 10
+
+# Delay after app initialization
+config FIRST_MEASURING_DELAY_SECONDS
+	int
+	default 10
+
+source "Kconfig.zephyr"
