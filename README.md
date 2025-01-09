@@ -37,6 +37,18 @@ To build the main application, run the following command:
 west build --sysbuild -b <YOURBOARD> application/app
 ```
 
+To build the application for the sham_nrf52833 board
+
+```shell
+west build -b sham_nrf52833 application/app
+```
+
+To build the application for the nrf52840dk board with the overlay
+
+```shell
+west build -b nrf52840dk/nrf52840 application/app -DDTC_OVERLAY_FILE=../boards/arm/nrf52840dk_nrf52840.overlay
+```
+
 > **Note**
 > This assumes your Zephyr SDK is installed in a well-known location. Otherwise, you might want to
 > set `ZEPHYR_SDK_INSTALL_DIR` in your environment.
