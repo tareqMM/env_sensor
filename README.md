@@ -37,6 +37,12 @@ To build the main application, run the following command:
 west build --sysbuild -b <YOURBOARD> application/app
 ```
 
+To build the application for the sham_nrf52833 board
+
+```shell
+west build -b sham_nrf52833 application/app
+```
+
 To flash the firmware:
 
 ```shell
