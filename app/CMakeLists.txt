@@ -1,3 +1,8 @@
+#
+# Copyright (c) 2024 Tareq Mhisen
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 
 cmake_minimum_required(VERSION 3.20.0)
 
@@ -7,5 +12,6 @@ project(app LANGUAGES C)
 target_sources(app PRIVATE
     src/events_svc.c
     src/main.c
+    src/humidity_temperature_svc.c
     src/user_interface.c
 )

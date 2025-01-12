@@ -1,15 +1,25 @@
 /*
- * Copyright (c) 2024 Tareq Mhisen.
+ * Copyright (c) 2024 Tareq Mhisen
  *
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <stdio.h>
+#include <zephyr/logging/log.h>
+
+#include "humidity_temperature_svc.h"
+
+LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
 int main(void)
 {
-	printf("Hello there :) \n");
+	int ret;
+
+	LOG_INF("Starting up .. .. ..");
+
+	ret = humidity_temperature_svc_init();
+	if (ret != 0) {
+		LOG_ERR("Failed to initialize humidity and temperature service!");
+	}
 
 	return 0;
 }
-
