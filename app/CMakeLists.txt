@@ -14,4 +14,8 @@ target_sources(app PRIVATE
     src/main.c
     src/humidity_temperature_svc.c
     src/user_interface.c
+    src/zigbee_svc.c
 )
+
+# Stop searching of if no zigbee network was found after 15 sec (restarting searching/joining procedure can be triggered again by button press) 
+zephyr_compile_definitions(ZB_DEV_REJOIN_TIMEOUT_MS=15000)

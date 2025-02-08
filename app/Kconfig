@@ -1,0 +1,59 @@
+#
+# Copyright (c) 2024 Tareq Mhisen
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+mainmenu "Environmental Sensor Application"
+
+menu "Application configuration"
+
+config MEASURING_PERIOD_SECONDS
+    int "Sampling period for temperature and humidity measurements (in seconds)"
+    default 60
+    help
+        Defines how frequently the sensor samples temperature and humidity data. Adjust this value to balance between data freshness and power consumption.
+
+config FIRST_MEASUREMENT_DELAY_SECONDS
+    int "Delay before the first measurement after device startup (in seconds)"
+    default 10
+    help
+        Specifies the time to wait after booting before taking the initial measurement. This allows the device to stabilize before collecting data.
+
+config NWK_ED_DEVICE_TIMEOUT_INDEX
+    int "Index representing the end device timeout period"
+    default 12
+    help
+        Corresponds to the timeout duration in minutes for the End Device Timeout Request command sent by an end device to inform its parent of its timeout requirements.
+        For example, an index of 12 equals 4096 minutes. This setting allows the parent to remove the child from the neighbor table if it hasn't communicated within the specified time.
+
+config KEEP_ALIVE_PERIOD_SECONDS
+    int "Interval for sending keep-alive messages to the parent device (in seconds)"
+    default 81920
+    help
+        Defines how often the end device sends keep-alive messages to its parent (e.g., a router or coordinator) to ensure it remains in the neighbor table.
+        It's recommended to send approximately three keep-alive messages during the End Device Timeout period to maintain connectivity.
+
+config LONG_POLL_PERIOD_SECONDS
+    int "Interval at which a Sleepy End Device polls its parent for pending messages (in seconds)"
+    default 61440
+    help
+        Determines how frequently a Sleepy End Device wakes up to check with its parent device for any pending messages.
+        Adjusting this interval affects the device's responsiveness to incoming messages and its power consumption.
+        It's recommended to set this period shorter than one-third of the End Device Timeout period to prevent unexpected device aging.
+
+config SENSOR_INIT_BASIC_MANUF_NAME
+    string "Manufacturer name of the Zigbee device (maximum 32 characters)"
+    default "SHAM_TBZ"
+    help
+        Specifies the manufacturer name for the device's basic cluster. This information is used in device identification and should not exceed 32 characters.
+
+config SENSOR_INIT_BASIC_MODEL_ID
+    string "Model identifier assigned by the manufacturer (maximum 32 characters)"
+    default "Environmental Sensor 0.0.1"
+    help
+        Defines the model identifier for the device's basic cluster. This helps in distinguishing different models and should be concise, not exceeding 32 characters.
+
+endmenu
+
+source "Kconfig.zephyr"
